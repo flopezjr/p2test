@@ -86,18 +86,42 @@ def airport_plot():
 
     return json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
 
+@app.route("/")
+def index():
+    # title = "Airline Stats and Visualizations"
+    return render_template("test_copy.html")
 
+@app.route("/routes")
+def routes():
+    return render_template("routes.html")
+
+@app.route("/visuals")
+def visuals():
+    return render_template("visuals.html")
+
+@app.route("/traffic")
+def traffic():
+    fig1 = create_plot_express()
+    return render_template("traffic.html", fig1=fig1)
+
+@app.route("/performance")
+def performance():
+    return render_template("performance.html")
+
+@app.route("/team")
+def team():
+    return render_template("team.html")    
 
 @app.route("/")
 def home():
     fig1 = create_plot_express()
     return render_template("index.html", fig1=fig1)
 
-@app.route("/express")
-def express():
-    fig2 = airport_plot()
-    return render_template("express.html", fig2=fig2)
+# @app.route("/express")
+# def express():
+#     fig2 = airport_plot()
+#     return render_template("express.html", fig2=fig2)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=5004)
