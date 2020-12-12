@@ -89,7 +89,8 @@ def airport_plot():
 @app.route("/")
 def index():
     # title = "Airline Stats and Visualizations"
-    return render_template("test_copy.html")
+    return render_template("index.html")
+
 
 @app.route("/routes")
 def routes():
@@ -112,10 +113,10 @@ def performance():
 def team():
     return render_template("team.html")    
 
-@app.route("/")
-def home():
-    fig1 = create_plot_express()
-    return render_template("index.html", fig1=fig1)
+# @app.route("/")
+# def home():
+#     fig1 = create_plot_express()
+#     return render_template("index.html", fig1=fig1)
 
 # @app.route("/express")
 # def express():
