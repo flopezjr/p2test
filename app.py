@@ -107,7 +107,8 @@ def traffic():
 
 @app.route("/performance")
 def performance():
-    return render_template("performance.html")
+    fig2 = airport_plot()
+    return render_template("performance.html", fig2=fig2)
 
 @app.route("/team")
 def team():

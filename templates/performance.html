@@ -9,9 +9,12 @@
             <li> Airport v/s Delays</li> <p>- delays pertaining to top 10 airport</p>
             <li>Carrier v/s Delays </li> <p>-delays caused by carriers</p>
         </ul>
-    <!--<div class="container">
-       
-    </div>-->
+    <div id="myPlot">
+    </div>
+    <script>
+        Plotly.newPlot("myPlot", {{ fig2 | safe }})
+    </script>
+
     <p style ="font-weight: bold;" > Observation:</p>
     
 {% endblock %}
