@@ -167,19 +167,19 @@ def carrier_plot():
     fig5 = px.bar(
     data.groupby("carrier", as_index=False)
     .sum()
-    .sort_values(by="arr_flights", ascending=False),
+    .sort_values(by="arr_del15", ascending=False),
     x="carrier",
-    y="arr_flights",
+    y="arr_del15",
     labels={
         "carrier": "Carrier",
         "flight_year": "Flight Year",
         "airport": "Airport",
-        "arr_flights": "Num. of Delayed Flights",
+        "arr_del15": "Num. of Delayed Flights",
         "arr_delay": "Delay Time (Hours)",
         "carrier_ct": "Air Carrier Delay",
     },
     title="Total Delayed Flight by Airport (2013 - 2018)",
-    text="arr_flights",
+    text="arr_del15",
 )
 
     return json.dumps(fig5, cls=plotly.utils.PlotlyJSONEncoder)
@@ -192,7 +192,8 @@ def index():
 
 @app.route("/routes")
 def routes():
-    return render_template("routes.html")
+    fig3 = year_carrier_plot()
+    return render_template("routes.html", fig3=fig3)
 
 @app.route("/visuals")
 def visuals():
@@ -210,8 +211,8 @@ def performance():
 
 @app.route("/carrier_delay")
 def carrier_delay():
-    fig3 = year_carrier_plot()
-    return render_template("carrier_delay.html", fig3=fig3)
+    fig5 = carrier_plot()
+    return render_template("carrier_delay.html", fig5=fig5)
 
 @app.route("/team")
 def team():
